@@ -79,7 +79,7 @@
     "User": {
       "type": "object",
       "properties": {
-        "id": {
+        "name": {
           "type": "string"
         },
         "username": {
