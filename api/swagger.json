@@ -60,6 +60,36 @@
             "description": "successful operation"
           }
         }
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Actualiza un usuario",
+        "description": "Actualiza un usuario en nuestra app",
+        "operationId": "updateUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Usuario Actualizado",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserUpdated"
+            }
+          }
+        ],
+        "security": {
+          "Bearer": []
+        },
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
       }
     },
     "/auth/login": {
@@ -101,13 +131,31 @@
         "read:pets": "read your pets"
       }
     },
-    "api_key": {
+    "Bearer": {
       "type": "apiKey",
-      "name": "api_key",
-      "in": "header"
+      "name": "Authorization",
+      "in": "header",
+      "description": "Enter the token with the `Bearer: ` prefix, e.g. 'Bearer: abcde12345'."
     }
   },
   "definitions": {
+    "UserUpdated": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
     "User": {
       "type": "object",
       "properties": {

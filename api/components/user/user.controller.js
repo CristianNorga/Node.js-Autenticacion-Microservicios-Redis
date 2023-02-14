@@ -20,6 +20,12 @@ module.exports = (injectedStore) => {
 			username: body.username,
 		};
 
+		if (body.id) {
+			user.id = body.id;
+		} else {
+			user.id = nanoid();
+		}
+
 		user.id = nanoid();
 
 		if(body.password || body.username){

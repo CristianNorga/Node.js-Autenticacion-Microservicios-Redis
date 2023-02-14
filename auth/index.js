@@ -8,13 +8,21 @@ function sign(data) {
 }
 
 function verify(token) {
-	return jwt.verify(token, secret);
+	try {
+		return jwt.verify(token, secret);
+	} catch (error) {
+		throw new Error(error.message);
+	}
 }
 
 const check = {
 	own: function (req, owner) {
 		const decoded = decodeHeader(req);
 		console.log(decoded);
+
+		if (decoded.id !== owner) {
+			throw new Error('No puedes hacer esto');
+		}
 	},
 };
 
@@ -32,6 +40,7 @@ function getToken(auth) {
 }
 
 function decodeHeader(req) {
+	console.log('req decodeHeader', req.headers);
 	const authorization = req.headers.authorization || '';
 	const token = getToken(authorization);
 	const decoded = verify(token);
@@ -42,5 +51,6 @@ function decodeHeader(req) {
 }
 
 module.exports = {
-	sign
+	sign,
+	check
 };

@@ -1,7 +1,15 @@
 const db = {
-  user: [
-    {id: 1, name: 'cristian', username: 'admin'}
-  ]
+	user: [
+		{ id: 1, name: 'cristian', username: 'admin' },
+		{ name: 'pedro', username: 'user', id: 'THPYrZxlepAbsQyL5hTAx' },
+	],
+	auth: [
+		{
+			id: 'THPYrZxlepAbsQyL5hTAx',
+			username: 'user',
+			password: '$2b$05$hy1i1Sh2BhrZm.Udp4KAzuDpttddnWOg7B7c/qY7jGJroXA8B43tu',
+		},
+	],
 };
 
 async function list(table){
@@ -18,7 +26,7 @@ async function upsert(table, data){
     db[table] = [];
   }
   db[table].push(data);
-  // console.log(db)
+  console.log(db)
   return 'created'
 }
 
