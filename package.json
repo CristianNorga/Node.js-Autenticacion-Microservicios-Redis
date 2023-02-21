@@ -5,6 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "node --watch api/index",
+    "pm2Start": "pm2 start api/index && pm2 start mysql/index && pm2 start post/index",
+    "pm2StartCreate": "pm2 start 0 && pm2 start 1 && pm2 start 2",
+    "pm2ReStart": "pm2 restart 0",
+    "pm2Stop": "pm2 stop 0 && pm2 stop 1 && pm2 stop 2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Cristian David Noreña Saldarriaga <cristian.rraga95@hotmail.com>",
@@ -15,6 +19,7 @@
     "jsonwebtoken": "^9.0.0",
     "mysql": "^2.18.1",
     "nanoid": "^2.1.11",
+    "node-fetch": "^3.3.0",
     "swagger-ui-express": "^4.6.0"
   }
 }

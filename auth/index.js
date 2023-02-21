@@ -25,6 +25,10 @@ const check = {
 			throw error('No puedes hacer esto', 401);
 		}
 	},
+
+	logged: function (req, owner) {
+		const decoded = decodeHeader(req);
+	},
 };
 
 function getToken(auth) {
@@ -41,7 +45,6 @@ function getToken(auth) {
 }
 
 function decodeHeader(req) {
-	console.log('req decodeHeader', req.headers);
 	const authorization = req.headers.authorization || '';
 	const token = getToken(authorization);
 	const decoded = verify(token);
